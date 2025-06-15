@@ -1,16 +1,10 @@
-from flask import Flask, jsonify, request
+from Backend.app import app
+from Backend.directions.collaboratorsDirections import colaboratorBP
+from Backend.directions.skillsDirections import cskillsBP
 
-app = Flask(__name__)
+# Register the blueprint for collaborator routes
+app.register_blueprint(colaboratorBP)
+app.register_blueprint(cskillsBP)
 
-# Ruta simple de prueba
-@app.route('/', methods=['GET'])
-def home():
-    return jsonify({"mensaje": "¡API Flask funcionando correctamente!"})
-
-# Ruta de ejemplo tipo REST
-@app.route('/saludo/<nombre>', methods=['GET'])
-def saludar(nombre):
-    return jsonify({"saludo": f"Hola, {nombre}!"})
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
