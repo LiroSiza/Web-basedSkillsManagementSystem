@@ -1,0 +1,238 @@
+.skills-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  user-select: none;
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .skill-header-collaborator {
+    font-size: 18px;
+    padding:20px 30px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .col {
+      width: 100%;
+      justify-content: center;
+      .col2 {
+        margin-top: 20px;
+      }
+    }
+  }
+  .skill-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    background-color: var(--border-color);
+    font-size: 18px;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    align-items: center;
+
+    .col {
+      text-align: center;
+      &:last-child {
+        button {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background-color: var(--button-color);
+          color: white;
+          border-radius: 20px;
+          padding: 8px 16px;
+          font-size: 16px;
+          font-weight: 500;
+          text-transform: none;
+          border: none;
+          cursor: pointer;
+
+          mat-icon {
+            font-size: 22px;
+            vertical-align: middle;
+          }
+
+          &:hover {
+            background-color: var(--button-hover-color);
+          }
+        }
+      }
+    }
+  }
+
+  .skills-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    transition: box-shadow 0.2s ease;
+    background-color: white;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .col {
+      text-align: center;
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 20px;
+
+      &.basic {
+        color: white;
+        font-weight: 500;
+        background-color: var(--basic-level-light-color);
+        padding: 5px 15px 5px 15px;
+        border: 1px solid var(--basic-level-color);
+      }
+
+      &.intermediate {
+        color: white;
+        font-weight: 500;
+        background-color: var(--intermediate-level-light-color);
+        padding: 5px 15px 5px 15px;
+        border: 1px solid var(--intermediate-level-color);
+      }
+
+      &.advanced {
+        color: white;
+        font-weight: 500;
+        background-color: var(--advanced-level-light-color);
+        padding: 5px 15px 5px 15px;
+        border: 1px solid var(--advanced-level-color);
+      }
+
+      img {
+        border-radius: 8px;
+        object-fit: contain;
+      }
+
+      span {
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      &:first-child {
+        font-weight: 500;
+      }
+
+      &:nth-child(3) {
+        color: var(--text-color);
+      }
+
+      &:last-child {
+        button {
+          background-color: transparent;
+          border-radius: 20px;
+          padding: 8px 16px;
+          font-size: 12px;
+          font-weight: 500;
+          text-transform: none;
+          min-width: 50px;
+          border: none;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--button-hover-color);
+          }
+        }
+        .btn-delete {
+          color: var(--trash-btn-color);
+
+          &:hover {
+            color: var(--trash-btn-hover-color);
+          }
+        }
+        .btn-edit {
+          color: var(--edit-btn-color);
+
+          &:hover {
+            color: var(--edit-btn-hover-color);
+          }
+        }
+      }
+    }
+  }
+
+  mat-card {
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+  }
+
+  // 📱 Responsive: tablets
+  @media (max-width: 768px) {
+    .skill-header,
+    .skill-row {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+
+      .col:nth-child(2) {
+        display: none;
+      }
+    }
+
+    .title {
+      font-size: 20px;
+    }
+
+    .skill-row .col:last-child button {
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+  }
+
+  // 📱 Responsive: móviles
+  @media (max-width: 480px) {
+    .skill-header,
+    .skill-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 12px 10px;
+
+      .col:nth-child(2),
+      .col:nth-child(3) {
+        display: none;
+      }
+
+      .col {
+        font-size: 13px;
+      }
+
+      .col:last-child {
+        justify-self: end;
+
+        button {
+          padding: 5px 8px;
+          font-size: 11px;
+          min-width: 40px;
+        }
+      }
+    }
+
+    .title {
+      font-size: 18px;
+    }
+
+    .skills-container {
+      padding: 10px;
+    }
+  }
+}

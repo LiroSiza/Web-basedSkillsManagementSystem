@@ -87,10 +87,17 @@ $SkillsMS-theme: mat.define-light-theme((
   --background-color: #F9FAFB;
   --border-color: #DDE1E6;
   --button-color: #60C8CB;
-  --button-hover-color: rgb(63, 143, 223);
+  --button-hover-color: #4d9ea1;
   --basic-level-color: #F9A825;
+  --basic-level-light-color: #f9a825b0;
   --intermediate-level-color: #1976D2;
+  --intermediate-level-light-color: #1976d2bb;
   --advanced-level-color: #388E3C;
+  --advanced-level-light-color: #388e3cba;
+  --trash-btn-color: #F44336;
+  --trash-btn-hover-color: #D32F2F;
+  --edit-btn-color: #2196F3;
+  --edit-btn-hover-color: #1976D2;
 }
 
 body {

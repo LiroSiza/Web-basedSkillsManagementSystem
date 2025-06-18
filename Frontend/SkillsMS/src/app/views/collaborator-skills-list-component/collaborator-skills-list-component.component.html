@@ -1,1 +1,46 @@
-<p>collaborator-skills-list-component works!</p>
+<div class="skills-container">
+  <div class="title">Skills de Colaborador</div>
+
+  <div class="skill-header-collaborator">
+    <div class="col">
+      <b>Nombre: </b>{{ collaboratorData.name }}
+      <div class="col2"><b>Apellidos: </b>{{ collaboratorData.lastnames }}</div>
+    </div>
+    <div class="col"><b>Rol: </b>{{ collaboratorData.rol }}</div>
+  </div>
+
+  <div class="skill-header">
+    <div class="col">Técnología</div>
+    <div class="col">Nivel</div>
+    <div class="col">Años de experiencia</div>
+    <div class="col">
+      <button mat-button color="primary">
+        <mat-icon>add</mat-icon><span>Agregar</span>
+      </button>
+    </div>
+  </div>
+
+  <mat-card *ngFor="let skill of skills" class="skills-row">
+    <div class="col">
+      <img
+        [src]="'../../../assets/logo/' + (skill.strSName === '.Net' ? 'Net' : skill.strSName) + '.png'"
+        alt="{{ skill.strSName }}"
+        width="40px"
+        height="40px"
+      />
+      <span>{{ skill.strSName }}</span>
+    </div>
+    <div class="col" [ngClass]="(skill.strSLevel === 'Básico' ? 'basic' : (skill.strSLevel === 'Intermedio' ? 'intermediate' : 'advanced'))">
+      {{ skill.strSLevel }}
+    </div>
+  <div class="col">{{ skill.numSYOE > 1 ? skill.numSYOE + ' años' : skill.numSYOE + ' año' }}</div>
+    <div class="col">
+      <button mat-icon-button color="warn" aria-label="Eliminar" class="btn-delete">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Editar" class="btn-edit">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>

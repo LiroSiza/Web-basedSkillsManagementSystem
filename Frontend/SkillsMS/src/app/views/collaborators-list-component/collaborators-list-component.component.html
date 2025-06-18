@@ -1,1 +1,19 @@
-<p>collaborators-list-component works!</p>
+<div class="colaboradores-container">
+  <div class="title">Listado de Colaboradores</div>
+
+  <div class="colaborador-header">
+    <div class="col">Nombre</div>
+    <div class="col">Apellidos</div>
+    <div class="col">Rol</div>
+    <div class="col">Skills</div>
+  </div>
+
+  <mat-card *ngFor="let collaborator of collaborators" class="colaborador-row">
+    <div class="col">{{ collaborator.strName }}</div>
+    <div class="col">{{ collaborator.strLastnames }}</div>
+    <div class="col">{{ collaborator.strRol }}</div>
+    <div class="col">
+      <button mat-button color="primary" (click)="showSkills(collaborator)">Ver</button>
+    </div>
+  </mat-card>
+</div>

@@ -11,10 +11,9 @@ import { CollaboratorSkillsListComponentComponent } from './views/collaborator-s
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';;
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -31,7 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     MatCardModule,
     MatTabsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync()
