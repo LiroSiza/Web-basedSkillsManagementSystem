@@ -1,3 +1,8 @@
+
+ #################################################################
+ #           Rutas para un futuro manejar colaboradores          #
+ #################################################################
+
 from flask import Blueprint, request, jsonify
 import Backend.globalInfo.ResponseMessages as ResponseMessages
 import Backend.functions.collaboratorsFunctions as collaboratorsFunctions
@@ -5,9 +10,21 @@ import Backend.functions.collaboratorsFunctions as collaboratorsFunctions
 # Define the blueprint for colaborator-related routes
 colaboratorBP = Blueprint('collabBP', __name__, url_prefix='/api/collaborator')
 
-# Route to get all colaborators
 @colaboratorBP.get('/')
 def getCollaborators():
+    """
+    Obtener todos los colaboradores
+    ---
+    tags:
+      - Collaborators
+    responses:
+      200:
+        description: Lista de colaboradores obtenida exitosamente
+      472:
+        description: No se encontraron colaboradores
+      500:
+        description: Error interno del servidor
+    """
     try:
         collaboratorsInfo = collaboratorsFunctions.getAllCollaborators()
         #print("Collaborators Data:", collaboratorsInfo)
@@ -27,6 +44,27 @@ def getCollaborators():
     
 @colaboratorBP.get('/<collaboratorId>')
 def getCollaboratorsById(collaboratorId):
+    """
+    Obtener un colaborador por su ID
+    ---
+    tags:
+      - Collaborators
+    parameters:
+      - name: collaboratorId
+        in: path
+        type: string
+        required: true
+        description: ID del colaborador a obtener
+    responses:
+      200:
+        description: Colaborador encontrado
+      203:
+        description: ID inválido o no proporcionado
+      472:
+        description: No se encontró colaborador
+      500:
+        description: Error interno del servidor
+    """
     try:
         if not collaboratorId:
             return jsonify(ResponseMessages.err203)
@@ -47,6 +85,41 @@ def getCollaboratorsById(collaboratorId):
 
 @colaboratorBP.post('/')
 def postCollaborator():
+    """
+    Crear un nuevo colaborador
+    ---
+    tags:
+      - Collaborators
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              strName:
+                type: string
+                description: Nombre del colaborador
+              strLastnames:
+                type: string
+                description: Apellidos del colaborador
+              strRol:
+                type: string
+                description: Rol del colaborador
+            required:
+              - strName
+              - strLastnames
+              - strRol
+    responses:
+      200:
+        description: Colaborador creado exitosamente
+      203:
+        description: Parámetros incompletos
+      472:
+        description: Datos inválidos
+      500:
+        description: Error interno del servidor
+    """
     try:
         requestData = request.get_json()
         if not requestData:
@@ -63,6 +136,45 @@ def postCollaborator():
     
 @colaboratorBP.put('/')
 def putCollaborator():
+    """
+    Actualizar un colaborador existente
+    ---
+    tags:
+      - Collaborators
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+                description: ID del colaborador
+              strName:
+                type: string
+                description: Nombre
+              strLastnames:
+                type: string
+                description: Apellidos
+              strRol:
+                type: string
+                description: Rol
+            required:
+              - _id
+              - strName
+              - strLastnames
+              - strRol
+    responses:
+      200:
+        description: Colaborador actualizado exitosamente
+      203:
+        description: Parámetros incompletos
+      472:
+        description: Datos inválidos
+      500:
+        description: Error interno del servidor
+    """
     try:
         requestData = request.get_json()
         if not requestData:
@@ -78,6 +190,27 @@ def putCollaborator():
     
 @colaboratorBP.delete('/<collaboratorId>')
 def deleteCollaboratorById(collaboratorId):
+    """
+    Eliminar un colaborador por su ID
+    ---
+    tags:
+      - Collaborators
+    parameters:
+      - name: collaboratorId
+        in: path
+        type: string
+        required: true
+        description: ID del colaborador a eliminar
+    responses:
+      200:
+        description: Colaborador eliminado exitosamente
+      203:
+        description: ID inválido o no proporcionado
+      472:
+        description: No se encontró colaborador para eliminar
+      500:
+        description: Error interno del servidor
+    """
     try:
         if not collaboratorId:
             return jsonify(ResponseMessages.err203)
