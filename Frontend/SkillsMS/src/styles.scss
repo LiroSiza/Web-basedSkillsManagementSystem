@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #60C8CB;
+  --secondary-color: #60C8CB;
+  --text-color: #4A4A4A;
+  --secondary-text-color: #6B7280;
+  --background-color: #F9FAFB;
+  --border-color: #DDE1E6;
+  --button-color: #60C8CB;
+  --button-hover-color: rgb(63, 143, 223);
+  --basic-level-color: #F9A825;
+  --intermediate-level-color: #1976D2;
+  --advanced-level-color: #388E3C;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
