@@ -58,7 +58,7 @@ python -m venv venvSMS
 venvSMS\Scripts\activate   # En Windows
 # source venvSMS/bin/activate  # En Linux/macOS
 pip install -r requirements.txt
-python app.py
+python Directions.py
 ```
 
 El backend estará disponible en: http://127.0.0.1:5000
