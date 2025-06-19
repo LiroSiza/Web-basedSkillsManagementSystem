@@ -33,9 +33,9 @@
     <div class="col" [ngClass]="(skill.strSLevel === 'Básico' ? 'basic' : (skill.strSLevel === 'Intermedio' ? 'intermediate' : 'advanced'))">
       {{ skill.strSLevel }}
     </div>
-  <div class="col">{{ skill.numSYOE > 1 ? skill.numSYOE + ' años' : skill.numSYOE + ' año' }}</div>
+  <div class="col">{{ skill.numSYOE !== 1 ? skill.numSYOE + ' años' : skill.numSYOE + ' año' }}</div>
     <div class="col">
-      <button mat-icon-button color="warn" aria-label="Eliminar" class="btn-delete">
+      <button mat-icon-button color="warn" aria-label="Eliminar" class="btn-delete" (click)="deleteCollaboratorSkill(skill)">
         <mat-icon>delete</mat-icon>
       </button>
       <button mat-icon-button color="primary" aria-label="Editar" class="btn-edit" (click)="openModal(skill)">
