@@ -1,11 +1,55 @@
-<div class="auth-container">
-  <div class="logo">LT</div>
-  <div class="title">Welcome Back</div>
-  <div class="subtitle">Sign in to your account</div>
-  <form>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
-    <button type="submit">Login</button>
-  </form>
-  <div class="switch-link">Don't have an account? Register</div>
-</div>
+<mat-card class="auth-container">
+  <div class="logo"><img src="../../../assets/icon_LinkThinks.ico" alt="logo LinkThinks"></div>
+  <div class="title">LinkThinks</div>
+  <div class="subtitle">Sistema de Administración de Skills</div>
+
+  <mat-tab-group>
+    <mat-tab label="Login">
+      <div class="subtitle sub">Inicia sesión en tu cuenta</div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input type="email" placeholder="Email" formControlName="email" />
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">Email inválido.</small>
+        </div>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            La contraseña debe tener al menos 6 caracteres.
+            </small>
+        </div>
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        </form>
+    </mat-tab>
+
+    <mat-tab label="Register">
+      <div class="subtitle sub">Crea una cuenta nueva</div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Name" formControlName="name" />
+        <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="error">
+            <small *ngIf="registerForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+            <small *ngIf="registerForm.get('name')?.errors?.['minlength']">
+            El nombre debe tener al menos 2 caracteres.
+            </small>
+        </div>
+        <input type="email" placeholder="Email" formControlName="email" />
+        <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="error">
+            <small *ngIf="registerForm.get('email')?.errors?.['required']">El email es obligatorio.</small>
+            <small *ngIf="registerForm.get('email')?.errors?.['email']">Email inválido.</small>
+        </div>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="error">
+            <small *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es obligatoria.</small>
+            <small *ngIf="registerForm.get('password')?.errors?.['minlength']">
+            La contraseña debe tener al menos 6 caracteres.
+            </small>
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        </form>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>
