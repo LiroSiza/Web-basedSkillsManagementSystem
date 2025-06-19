@@ -11,6 +11,9 @@ export class CollaboratorSkillsListComponentComponent {
   
   collaboratorData: any; // Declare collaboratorId to store the ID from query parameters
   skills: any[] = []; // Initialize skills as an empty array
+  showModal = false;
+  selectedSkill: any = null;
+  existingSkillNames: any[] = [];
 
   constructor(
     private collaboratorSkillsService: CollaboratorSkillsServiceService,
@@ -39,6 +42,44 @@ export class CollaboratorSkillsListComponentComponent {
       },
       (error) => {
         console.error('Error fetching skills:', error);
+      }
+    );
+  }
+
+  openModal(skill?: any) {
+    this.existingSkillNames = this.skills.map(s => s.strSName); // Skills existentes
+    this.selectedSkill = skill || null;  // Modo editar | agregar
+    this.showModal = true;
+  }
+
+  handleSave(skill: any) {
+    if (this.selectedSkill) {
+      // EDITAR
+      console.log('Editando skill:', skill);
+      // Aquí llamas al servicio para actualizar skill (con ID si aplica)
+    } else {
+      // NUEVO
+      console.log('Agregando skill:', skill);
+      // Aquí llamas al servicio para crear una nueva skill
+      const newSkill = {
+        _id : this.collaboratorData.id,
+        strSName : skill.strSName,
+        strSLevel : skill.strSLevel,
+        numSYOE : skill.numSYOE
+      }
+      this.createSkill(newSkill);
+    }
+  }
+
+  createSkill(newSkillData: any) {
+    console.log(newSkillData);
+    this.collaboratorSkillsService.createCollaboratorSkill(newSkillData).subscribe(
+      (data) => {
+        console.log('New Skill - successfully:', data);
+        this.fetchCollaborators();
+      },
+      (error) => {
+        console.error('Error new skill:', error);
       }
     );
   }

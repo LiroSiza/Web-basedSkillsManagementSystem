@@ -13,4 +13,11 @@ export class CollaboratorSkillsServiceService {
   getAllCollaboratorSkills(collaboratorId: string): Observable<any> {
     return this.httpClient.get(_URL_COLLABORATOR_SKILLS + `/${collaboratorId}`);
   }
+
+  createCollaboratorSkill(data: any): Observable<any> {
+    return this.httpClient.post(_URL_COLLABORATOR_SKILLS + `/`, data, {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
 }

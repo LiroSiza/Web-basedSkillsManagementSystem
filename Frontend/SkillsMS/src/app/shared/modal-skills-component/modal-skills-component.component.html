@@ -1,1 +1,43 @@
-<p>modal-skills-component works!</p>
+<form #form="ngForm" (ngSubmit)="save()" novalidate>
+  <div class="modal-backdrop"></div>
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Agregar información</h3>
+      <button class="close-btn" mat-icon-button (click)="closeModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre</mat-label>
+        <mat-select [(ngModel)]="option1" name="option1" [disabled]="(data ? true : false)" required>
+            <ng-container *ngIf="getFilteredSkillOptions().length > 0; else noOptions">
+                <mat-option *ngFor="let opt of getFilteredSkillOptions()" [value]="opt">
+                    {{ opt }}
+                </mat-option>
+            </ng-container>
+            <ng-template #noOptions>
+                <mat-option disabled>No existen más opciones</mat-option>
+            </ng-template>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nivel</mat-label>
+        <mat-select [(ngModel)]="option2" name="option2" required>
+          <mat-option *ngFor="let o of levelOptions" [value]="o">{{ o }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Número</mat-label>
+        <input matInput type="number" [(ngModel)]="quantity" name="quantity" required />
+      </mat-form-field>
+    </div>
+
+    <div class="modal-footer">
+      <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid || !hasChanges()">Guardar</button>
+      <button mat-stroked-button color="warn" type="button" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</form>

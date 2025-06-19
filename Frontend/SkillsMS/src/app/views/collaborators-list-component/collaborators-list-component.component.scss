@@ -84,6 +84,15 @@
     box-shadow: none;
   }
 
+  .no-data {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #888;
+    font-style: italic;
+  }
+
+
   // 📱 Responsive: tablets
   @media (max-width: 768px) {
     .colaborador-header,

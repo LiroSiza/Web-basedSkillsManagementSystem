@@ -1,7 +1,7 @@
 <div class="colaboradores-container">
   <div class="title">Listado de Colaboradores</div>
 
-  <div class="colaborador-header">
+  <div class="colaborador-header" *ngIf="collaborators.length > 0">
     <div class="col">Nombre</div>
     <div class="col">Apellidos</div>
     <div class="col">Rol</div>
@@ -16,4 +16,9 @@
       <button mat-button color="primary" (click)="showSkills(collaborator)">Ver</button>
     </div>
   </mat-card>
+
+  <!-- Mensaje cuando no hay colaboradores -->
+  <div class="no-data" *ngIf="collaborators.length === 0">
+    <p>No hay colaboradores registrados.</p>
+  </div>
 </div>

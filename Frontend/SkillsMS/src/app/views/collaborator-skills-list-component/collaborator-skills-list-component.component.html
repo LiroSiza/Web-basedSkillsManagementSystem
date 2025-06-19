@@ -14,7 +14,7 @@
     <div class="col">Nivel</div>
     <div class="col">Años de experiencia</div>
     <div class="col">
-      <button mat-button color="primary">
+      <button mat-button color="primary" (click)="openModal()">
         <mat-icon>add</mat-icon><span>Agregar</span>
       </button>
     </div>
@@ -38,9 +38,17 @@
       <button mat-icon-button color="warn" aria-label="Eliminar" class="btn-delete">
         <mat-icon>delete</mat-icon>
       </button>
-      <button mat-icon-button color="primary" aria-label="Editar" class="btn-edit">
+      <button mat-icon-button color="primary" aria-label="Editar" class="btn-edit" (click)="openModal(skill)">
         <mat-icon>edit</mat-icon>
       </button>
     </div>
   </mat-card>
 </div>
+
+<app-modal-skills-component 
+  *ngIf="showModal"
+  [data]="selectedSkill"
+  [existingSkills]="existingSkillNames"
+  (onClose)="showModal = false"
+  (onSave)="handleSave($event)"
+/>

@@ -31,7 +31,7 @@ export class AuthComponentComponent {
         icon: 'success',
         title: '¡Bienvenido!',
         text: `Has iniciado sesión como ${email}`,
-        confirmButtonColor: '#60C8CB'  // Usa tu color principal
+        confirmButtonColor: '#60C8CB'
       });
       this.registerForm.markAsUntouched(); 
       this.router.navigate(['/collaborators']); // Navigate to the collaborators list on successful login
@@ -47,7 +47,7 @@ export class AuthComponentComponent {
       Swal.fire({
         icon: 'warning',
         title: 'En desarrollo',
-        confirmButtonColor: '#60C8CB'  // Usa tu color principal
+        confirmButtonColor: '#60C8CB'
       });
     } else {
       //console.log('Formulario Register inválido');
